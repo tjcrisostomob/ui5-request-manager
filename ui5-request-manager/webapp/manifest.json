@@ -88,17 +88,46 @@
       },
       "routes": [
         {
-          "name": "RouteMain",
-          "pattern": ":?query:",
-          "target": [
-            "TargetMain"
-          ]
+          "pattern": "",
+          "name": "main",
+          "target": "Main"
+        },
+        {
+          "pattern": "create",
+          "name": "create",
+          "target": "CreateRequest"
+        },
+        {
+          "pattern": "approve",
+          "name": "approve",
+          "target": "ApproveRequest"
+        },
+        {
+          "pattern": "detail/{id}",
+          "name": "detail",
+          "target": "DetailRequest"
+        },
+        {
+          "pattern": "edit/{id}",
+          "name": "edit",
+          "target": "EditRequest"
         }
       ],
       "targets": {
-        "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+        "Main": {
+          "viewName": "Main"
+        },
+        "CreateRequest": {
+          "viewName": "CreateRequest"
+        },
+        "ApproveRequest": {
+          "viewName": "ApproveRequest"
+        },
+        "DetailRequest": {
+          "viewName": "DetailRequest"
+        },
+        "EditRequest": {
+          "viewName": "EditRequest"
         }
       }
     },

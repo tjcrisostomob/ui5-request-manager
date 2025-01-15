@@ -1,7 +1,7 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    controllerName="sap.ui5-request-manager.controller.CreateRequest">
+    controllerName="com.company.ui5.requestmanager.ui5requestmanager.controller.CreateRequest">
     <Page
         id="createPage"
         title="{i18n>createPageTitle}">

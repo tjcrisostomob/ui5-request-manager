@@ -1,7 +1,7 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    controllerName="sap.ui5-request-manager.controller.ApproveRequest">
+    controllerName="com.company.ui5.requestmanager.ui5requestmanager.controller.ApproveRequest">
     <Page
         id="approvePage"
         title="{i18n>approvePageTitle}">

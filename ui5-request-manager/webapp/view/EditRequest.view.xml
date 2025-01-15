@@ -1,0 +1,39 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="com.company.ui5.requestmanager.ui5requestmanager.controller.EditRequest">
+    <Page
+        id="editPage"
+        title="{i18n>editPageTitle}">
+        <content>
+            <f:SimpleForm
+                id="editForm"
+                editable="true"
+                title="{i18n>editFormTitle}">
+                <Label text="{i18n>labelRequestName}" />
+                <Input value="{selectedRequest>/requestName}" />
+
+                <Label text="{i18n>labelRequestDescription}" />
+                <TextArea value="{selectedRequest>/requestDescription}" />
+
+                <Label text="{i18n>labelPriority}" />
+                <Input value="{selectedRequest>/priority}" />
+
+                <Label text="{i18n>labelStatus}" />
+                <Input value="{selectedRequest>/status}" />
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="{i18n>saveButton}"
+                    press=".onSave" />
+                <Button
+                    text="{i18n>cancelButton}"
+                    press=".onCancel" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

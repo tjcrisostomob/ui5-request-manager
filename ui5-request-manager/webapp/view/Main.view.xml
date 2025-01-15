@@ -1,19 +1,26 @@
 <mvc:View
+    controllerName="com.company.ui5.requestmanager.ui5requestmanager.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    controllerName="sap.ui5-request-manager.controller.Main">
+>
     <Page
         id="mainPage"
-        title="{i18n>mainPageTitle}">
+        title="{i18n>mainPageTitle}"
+    >
         <content>
             <List
                 id="mainList"
-                items="{/requests}">
+                items="{/requests}"
+            >
                 <StandardListItem
                     id="mainListItem"
                     title="{requestName}"
                     description="{requestDescription}"
-                    press=".onRequestSelect" />
+                    info="{status}"
+                    type="Navigation"
+                    infoState="{= ${status} === 'Pending' ? 'Warning' : ${status} === 'Approved' ? 'Success' : 'Error'}"
+                    press=".onRequestSelect"
+                />
             </List>
         </content>
     </Page>

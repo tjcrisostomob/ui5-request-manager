@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (Controller, MessageToast) {
     "use strict";
 
-    return Controller.extend("sap.ui5-request-manager.controller.CreateRequest", {
+    return Controller.extend("com.company.ui5.requestmanager.ui5requestmanager.controller.CreateRequest", {
         onSubmit: function () {
             MessageToast.show("Request submitted successfully!");
         }

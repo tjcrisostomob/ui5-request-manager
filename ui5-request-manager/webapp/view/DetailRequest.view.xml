@@ -1,9 +1,77 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page title="Request Details">
-        <ObjectHeader title="{selectedRequest>/name}" number="{selectedRequest>/id}"/>
-        <Text text="{selectedRequest>/description}"/>
-        <Button text="Edit" press=".onEdit"/>
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="com.company.ui5.requestmanager.ui5requestmanager.controller.DetailRequest"
+>
+    <Page
+        id="detailPage"
+        enableScrolling="true"
+        title="{i18n>detailPageTitle}"
+    >
+        <content>
+            <ObjectHeader
+                id="objectHeader"
+                title="{selectedRequest>/requestName}"
+                number="{selectedRequest>/id}"
+                numberUnit="{i18n>requestIDLabel}"
+            >
+                <attributes>
+                    <ObjectAttribute
+                        id="requestStatus"
+                        text="{i18n>statusLabel}: {selectedRequest>/status}"
+                    />
+                </attributes>
+            </ObjectHeader>
+
+            <f:SimpleForm
+                id="detailForm"
+                editable="false"
+                title="{i18n>detailFormTitle}"
+            >
+                <Label
+                    id="labelCreatedBy"
+                    text="{i18n>createdByLabel}"
+                />
+
+                <Text
+                    id="inputCreatedBy"
+                    text="{selectedRequest>/createdBy}"
+                />
+
+                <Label
+                    id="labelCreatedDate"
+                    text="{i18n>createdDateLabel}"
+                />
+                <Text
+                    id="textCreatedDate"
+                    text="{selectedRequest>/createdDate}"
+                />
+
+                <Label
+                    id="labelPriority"
+                    text="{i18n>priorityLabel}"
+                />
+                <Text
+                    id="textPriority"
+                    text="{selectedRequest>/priority}"
+                />
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar id="idToolbar">
+                <ToolbarSpacer id="idToolbarSpacer" />
+                <Button
+                    id="btnEditRequest"
+                    text="{i18n>editButton}"
+                    press=".onEdit"
+                />
+                <Button
+                    id="btnBack"
+                    text="{i18n>backButton}"
+                    press=".onNavBack"
+                />
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>

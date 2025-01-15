@@ -6,7 +6,7 @@ sap.ui.define([
 ], function (Controller, MessageToast, History, UIComponent) {
     "use strict";
 
-    return Controller.extend("com.company.ui5.requestmanager.ui5requestmanager.controller.DetailRequest", {
+    return Controller.extend("com.company.ui5.requestmanager.ui5requestmanager.controller.EditRequest", {
         /**
          * Called when the controller is instantiated.
          */
@@ -45,34 +45,24 @@ sap.ui.define([
 
             // Set the model to the view
             this.getView().setModel(oModel);
-
             var oRouter = UIComponent.getRouterFor(this);
-            oRouter.getRoute("detail").attachPatternMatched(this._onRouteMatched, this);
+            oRouter.getRoute("edit").attachPatternMatched(this._onRouteMatched, this);
         },
 
         /**
-         * Called when the route is matched to this view.
-         * Retrieves the request ID and binds the data to the view.
+         * Called when the route is matched.
          */
         _onRouteMatched: function (oEvent) {
             var sRequestId = oEvent.getParameter("arguments").id;
 
-            // Verifica que el modelo existe y tiene datos
+            // Obtén el modelo de solicitudes y encuentra la solicitud por ID
             var oModel = this.getView().getModel();
-            if (!oModel || !oModel.getProperty("/requests")) {
-                console.error("The model or /requests property is not defined.");
-                MessageToast.show("Data is not available.");
-                return;
-            }
-
-            // Busca la solicitud por ID
             var aRequests = oModel.getProperty("/requests");
             var oRequest = aRequests.find(function (request) {
                 return request.id === sRequestId;
             });
 
             if (oRequest) {
-                // Vincula el modelo de la solicitud seleccionada
                 var oSelectedRequestModel = new sap.ui.model.json.JSONModel(oRequest);
                 this.getView().setModel(oSelectedRequestModel, "selectedRequest");
             } else {
@@ -81,32 +71,25 @@ sap.ui.define([
         },
 
         /**
-         * Event handler for the 'Edit' button.
-         * Navigates to an edit page or enables editing in this view.
+         * Handles saving the changes.
          */
-        onEdit: function () {
-            // Obtén el modelo de la solicitud seleccionada
-            var oModel = this.getView().getModel("selectedRequest");
-            if (!oModel) {
-                sap.m.MessageToast.show("No data available for editing.");
-                return;
-            }
-
-            // Obtén el ID de la solicitud
-            var sRequestId = oModel.getProperty("/id");
-
-            // Navega a la vista de edición
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("edit", {
-                id: sRequestId
-            });
+        onSave: function () {
+            MessageToast.show("Changes saved successfully.");
+            this._navBack();
         },
 
         /**
-         * Event handler for the 'Back' button.
-         * Navigates to the previous page or the main view.
+         * Handles canceling the changes.
          */
-        onNavBack: function () {
+        onCancel: function () {
+            MessageToast.show("Edit canceled.");
+            this._navBack();
+        },
+
+        /**
+         * Navigates back to the previous page.
+         */
+        _navBack: function () {
             var oHistory = History.getInstance();
             var sPreviousHash = oHistory.getPreviousHash();
 
