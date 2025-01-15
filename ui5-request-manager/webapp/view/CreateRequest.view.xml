@@ -1,0 +1,36 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="sap.ui5-request-manager.controller.CreateRequest">
+    <Page
+        id="createPage"
+        title="{i18n>createPageTitle}">
+        <content>
+            <SimpleForm
+                id="createForm"
+                editable="true">
+                <Label
+                    id="labelRequestName"
+                    text="{i18n>labelRequestName}" />
+                <Input
+                    id="inputRequestName"
+                    value="{newRequest>/name}" />
+                <Label
+                    id="labelRequestDescription"
+                    text="{i18n>labelRequestDescription}" />
+                <TextArea
+                    id="textareaRequestDescription"
+                    value="{newRequest>/description}" />
+            </SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    id="btnSubmitRequest"
+                    text="{i18n>btnSubmitRequest}"
+                    press=".onSubmit" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

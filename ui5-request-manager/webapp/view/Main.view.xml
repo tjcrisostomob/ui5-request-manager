@@ -1,0 +1,20 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="sap.ui5-request-manager.controller.Main">
+    <Page
+        id="mainPage"
+        title="{i18n>mainPageTitle}">
+        <content>
+            <List
+                id="mainList"
+                items="{/requests}">
+                <StandardListItem
+                    id="mainListItem"
+                    title="{requestName}"
+                    description="{requestDescription}"
+                    press=".onRequestSelect" />
+            </List>
+        </content>
+    </Page>
+</mvc:View>

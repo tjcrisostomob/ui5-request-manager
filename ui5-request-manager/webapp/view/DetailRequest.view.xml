@@ -1,0 +1,9 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Request Details">
+        <ObjectHeader title="{selectedRequest>/name}" number="{selectedRequest>/id}"/>
+        <Text text="{selectedRequest>/description}"/>
+        <Button text="Edit" press=".onEdit"/>
+    </Page>
+</mvc:View>

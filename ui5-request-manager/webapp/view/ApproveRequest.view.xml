@@ -1,0 +1,38 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="sap.ui5-request-manager.controller.ApproveRequest">
+    <Page
+        id="approvePage"
+        title="{i18n>approvePageTitle}">
+        <content>
+            <Table
+                id="approveTable"
+                items="{/pendingRequests}">
+                <columns>
+                    <Column>
+                        <Text id="columnRequestID" text="{i18n>columnRequestID}" />
+                    </Column>
+                    <Column>
+                        <Text id="columnRequestStatus" text="{i18n>columnRequestStatus}" />
+                    </Column>
+                    <Column>
+                        <Text id="columnActions" text="{i18n>columnActions}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text id="cellRequestID" text="{id}" />
+                            <Text id="cellRequestStatus" text="{status}" />
+                            <Button
+                                id="btnApproveRequest"
+                                text="{i18n>btnApproveRequest}"
+                                press=".onApprove" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
